@@ -1,6 +1,6 @@
 # Review CV — v0.3
 
-Data: `data/profile.json`
+Data: `data/profile.id.json` dan `data/profile.en.json`
 
 ## Sudah diperbaiki
 

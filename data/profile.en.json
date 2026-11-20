@@ -1,0 +1,161 @@
+{
+  "profile": {
+    "name": "Gian Megantara",
+    "displayName": "Gian",
+    "title": "Tech Lead",
+    "tagline": "7+ years building data and AI platforms, from pipeline to deployment.",
+    "location": "West Java, Indonesia",
+    "workMode": "Remote",
+    "email": "gianmegantara@gmail.com",
+    "phone": "6285155333105",
+    "photo": "_review",
+    "summary": "Tech Lead with 7+ years of experience in backend, data, and AI. Currently leading the development of an intelligence platform for food and consumer trend data, after co-founding an AI-based security platform. Comfortable owning products end-to-end: scraping, data processing, APIs, frontend, infrastructure, and deployment.",
+    "openTo": ["Tech Lead", "Senior Software Engineer", "Data Engineer"],
+    "languages": [
+      { "name": "Indonesian", "level": "Native" },
+      { "name": "English", "level": "Professional" }
+    ],
+    "links": [
+      { "label": "LinkedIn", "url": "https://linkedin.com/in/gian-megantara", "icon": "linkedin" },
+      { "label": "GitHub", "url": "https://github.com/gianmegantara", "icon": "github" },
+      { "label": "Email", "url": "mailto:gianmegantara@gmail.com", "icon": "mail" }
+    ]
+  },
+
+  "skills": [
+    {
+      "group": "Languages",
+      "icon": "code",
+      "items": ["Go", "JavaScript / TypeScript", "Python", "SQL"]
+    },
+    {
+      "group": "Data & Backend",
+      "icon": "database",
+      "items": ["PostgreSQL", "Redis", "Pub/Sub", "REST API"]
+    },
+    {
+      "group": "Data Collection",
+      "icon": "bot",
+      "items": ["Web scraping", "Data pipeline", "LLM processing"]
+    },
+    {
+      "group": "Deployment",
+      "icon": "cloud",
+      "items": ["Docker", "VPS (Linux)", "Railway", "Vercel"]
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "Socialmethod",
+      "role": "Software Engineer",
+      "period": "Jul 2023 — Present",
+      "location": "Remote — Singapore",
+      "summary": "Intelligence platform for food and consumer trend data across Southeast Asia.",
+      "bullets": [
+        "Built a food and menu trend analytics platform for 11 markets, from data collection to dashboard.",
+        "Researched and integrated LLMs/OpenAI: APIs, AI agents, monitoring, and tracing.",
+        "Set up infrastructure and deployment, and maintained running products."
+      ],
+      "stack": ["Node.js", "Go", "Python", "PostgreSQL", "Docker", "Grafana"]
+    },
+    {
+      "company": "ServerSage.ai",
+      "role": "Co-Founder & Technical Lead",
+      "period": "Dec 2023 — Jan 2026",
+      "location": "Remote — Singapore / Indonesia",
+      "summary": "AI-powered security platform for offensive testing and findings reporting.",
+      "bullets": [
+        "Led the technical direction and built the product from scratch.",
+        "Built automation flows for reconnaissance, findings validation, and audit-ready reports."
+      ],
+      "stack": ["Python", "TypeScript", "LLM", "Docker"]
+    },
+    {
+      "company": "Tada (PT Aksi Visitama)",
+      "role": "Back End Developer",
+      "period": "Jul 2021 — Jun 2023",
+      "location": "Jakarta, Indonesia",
+      "summary": "Loyalty and customer retention platform with 400+ brands.",
+      "bullets": [
+        "Developed and maintained core APIs: loyalty, e-gift, referral, and delivery orders.",
+        "Worked with product and QA teams, and handled production bugs."
+      ],
+      "stack": ["JavaScript", "PostgreSQL", "MongoDB", "Redis", "NSQ"]
+    },
+    {
+      "company": "Emveep",
+      "role": "Web Developer",
+      "period": "Feb 2020 — Jun 2021",
+      "location": "Bandung, Indonesia",
+      "summary": "Backend development for data, HR, and fintech products.",
+      "bullets": [
+        "Built Go backends for global food trend data, an HR dashboard, and a P2P lending app."
+      ],
+      "stack": ["Go", "PostgreSQL", "Redis", "IBM IAM"]
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "Platform Intelligence",
+      "role": "Tech Lead",
+      "summary": "Food and menu trend analytics platform for several Southeast Asian markets.",
+      "stack": ["Go", "PostgreSQL", "React", "Python"],
+      "featured": true
+    },
+    {
+      "name": "AI Security Platform",
+      "role": "Co-Founder & Technical Lead",
+      "summary": "AI-powered security platform: reconnaissance, findings validation, and audit reports.",
+      "stack": ["Python", "TypeScript", "LLM", "Docker"],
+      "featured": true
+    },
+    {
+      "name": "Data Pipeline & Scraping",
+      "role": "Engineer",
+      "summary": "Data collection and processing pipeline from Instagram, TikTok, and food delivery platforms.",
+      "stack": ["Python", "PostgreSQL", "Redis", "Pub/Sub"],
+      "featured": false
+    },
+    {
+      "name": "Bot WhatsApp & Telegram",
+      "role": "Author",
+      "summary": "Conversational bots for expense tracking and task notifications, with LLM-based message parsing.",
+      "stack": ["TypeScript", "PostgreSQL", "OpenAI"],
+      "featured": false
+    },
+    {
+      "name": "Developer Tools",
+      "role": "Author",
+      "summary": "Small tools for browser automation, observability, and data sync.",
+      "stack": ["Go", "TypeScript", "Python"],
+      "featured": false
+    }
+  ],
+
+  "education": [
+    {
+      "school": "Universitas Kuningan",
+      "degree": "Bachelor of Software Engineering",
+      "period": "2014 — 2019"
+    }
+  ],
+
+  "publication": {
+    "title": "Implementasi Algoritma Genetika pada Tata Ruang Ibukota Kecamatan (Studi Kasus: Desa Hantara)",
+    "venue": "JEJARING: Jurnal Teknologi dan Manajemen Informatika, 2021",
+    "url": "https://doi.org/10.25134/jejaring.v6i2.6739"
+  },
+
+  "site": {
+    "lang": "en",
+    "sections": ["hero", "skills", "experience", "projects", "education", "contact"],
+    "theme": {
+      "mode": "dark",
+      "accent": "#E0218A",
+      "font": "Inter / JetBrains Mono",
+      "vibe": "clean dan sederhana"
+    }
+  }
+}

@@ -11,7 +11,7 @@ npm run preview   # cek hasil build
 
 ## Edit isi CV
 
-Semua teks ada di `data/profile.json`:
+Ada dua bahasa: `data/profile.id.json` (Indonesia) dan `data/profile.en.json` (Inggris).
 
 - `profile` — nama, title, kontak, link, bahasa
 - `skills` — kelompok keahlian

@@ -58,6 +58,42 @@ a {
   color: var(--muted);
 }
 
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+}
+
+.lang button {
+  padding: 4px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.lang button.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.lang button:not(.active):hover {
+  color: var(--text);
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -69,6 +105,7 @@ a {
   color: var(--text);
   font: inherit;
   font-size: 0.82rem;
+  white-space: nowrap;
   cursor: pointer;
   transition: border-color 0.15s ease, background 0.15s ease;
 }
@@ -472,6 +509,21 @@ footer a:hover {
     display: block;
     margin-top: 2px;
     font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .topbar-name {
+    display: none;
+  }
+
+  .topbar {
+    justify-content: flex-end;
+  }
+
+  .button {
+    padding: 7px 12px;
+    font-size: 0.78rem;
   }
 }
 

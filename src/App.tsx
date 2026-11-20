@@ -1,9 +1,41 @@
+import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
-import data from "../data/profile.json";
+import dataId from "../data/profile.id.json";
+import dataEn from "../data/profile.en.json";
 import { Icon } from "./Icon";
 import type { ProfileData } from "./types";
 
-const profile = data as unknown as ProfileData;
+type Lang = "id" | "en";
+
+const datasets: Record<Lang, ProfileData> = {
+  id: dataId as unknown as ProfileData,
+  en: dataEn as unknown as ProfileData,
+};
+
+const ui = {
+  id: {
+    download: "Unduh PDF",
+    skills: "Keahlian",
+    experience: "Pengalaman",
+    projects: "Proyek",
+    education: "Pendidikan",
+    publication: "Publikasi",
+    tech: "Teknologi",
+    builtWith: "Dibuat dengan React + Vite.",
+    language: "Bahasa",
+  },
+  en: {
+    download: "Download PDF",
+    skills: "Skills",
+    experience: "Experience",
+    projects: "Projects",
+    education: "Education",
+    publication: "Publication",
+    tech: "Technologies",
+    builtWith: "Built with React + Vite.",
+    language: "Language",
+  },
+};
 
 const isReal = (value?: string) =>
   Boolean(value) && !value!.startsWith("_review");
@@ -32,9 +64,9 @@ function Section({
   );
 }
 
-function Tags({ items }: { items: string[] }) {
+function Tags({ items, label }: { items: string[]; label: string }) {
   return (
-    <ul className="tags" aria-label="Teknologi">
+    <ul className="tags" aria-label={label}>
       {items.map((item) => (
         <li key={item}>{item}</li>
       ))}
@@ -43,6 +75,22 @@ function Tags({ items }: { items: string[] }) {
 }
 
 export function App() {
+  const [lang, setLang] = useState<Lang>(() => {
+    const query = new URLSearchParams(window.location.search).get("lang");
+    if (query === "en" || query === "id") return query;
+    const saved = localStorage.getItem("cv-lang");
+    return saved === "en" ? "en" : "id";
+  });
+
+  const profile = datasets[lang];
+  const t = ui[lang];
+
+  useEffect(() => {
+    localStorage.setItem("cv-lang", lang);
+    document.documentElement.lang = lang;
+    document.title = `${profile.profile.name} — ${profile.profile.title}`;
+  }, [lang, profile.profile.name, profile.profile.title]);
+
   const { profile: p, skills, experience, projects, education } = profile;
   const links = p.links.filter((link) => isReal(link.url));
   const featured = projects.filter((project) => project.featured);
@@ -55,14 +103,34 @@ export function App() {
     >
       <header className="topbar no-print">
         <span className="topbar-name">{p.name}</span>
-        <button
-          type="button"
-          className="button"
-          onClick={() => window.print()}
-        >
-          <Icon name="download" size={15} />
-          Unduh PDF
-        </button>
+        <div className="topbar-actions">
+          <div className="lang" role="group" aria-label={t.language}>
+            <button
+              type="button"
+              className={lang === "id" ? "active" : ""}
+              onClick={() => setLang("id")}
+              aria-pressed={lang === "id"}
+            >
+              ID
+            </button>
+            <button
+              type="button"
+              className={lang === "en" ? "active" : ""}
+              onClick={() => setLang("en")}
+              aria-pressed={lang === "en"}
+            >
+              EN
+            </button>
+          </div>
+          <button
+            type="button"
+            className="button"
+            onClick={() => window.print()}
+          >
+            <Icon name="download" size={15} />
+            {t.download}
+          </button>
+        </div>
       </header>
 
       <main>
@@ -92,7 +160,7 @@ export function App() {
           </ul>
         </section>
 
-        <Section title="Keahlian">
+        <Section title={t.skills}>
           <div className="skills">
             {skills.map((group) => (
               <article className="skill" key={group.group}>
@@ -100,13 +168,13 @@ export function App() {
                   <Icon name={group.icon} size={18} />
                   <h3>{group.group}</h3>
                 </div>
-                <Tags items={group.items} />
+                <Tags items={group.items} label={t.tech} />
               </article>
             ))}
           </div>
         </Section>
 
-        <Section title="Pengalaman">
+        <Section title={t.experience}>
           <ol className="timeline">
             {experience.map((job) => (
               <li className="job" key={`${job.company}-${job.period}`}>
@@ -123,21 +191,21 @@ export function App() {
                       <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
-                  <Tags items={job.stack} />
+                  <Tags items={job.stack} label={t.tech} />
                 </div>
               </li>
             ))}
           </ol>
         </Section>
 
-        <Section title="Proyek">
+        <Section title={t.projects}>
           <div className="projects featured">
             {featured.map((project) => (
               <article className="project" key={project.name}>
                 <p className="project-role">{project.role}</p>
                 <h3>{project.name}</h3>
                 <p>{project.summary}</p>
-                <Tags items={project.stack} />
+                <Tags items={project.stack} label={t.tech} />
               </article>
             ))}
           </div>
@@ -146,13 +214,13 @@ export function App() {
               <li key={project.name}>
                 <h3>{project.name}</h3>
                 <p>{project.summary}</p>
-                <Tags items={project.stack} />
+                <Tags items={project.stack} label={t.tech} />
               </li>
             ))}
           </ul>
         </Section>
 
-        <Section title="Pendidikan">
+        <Section title={t.education}>
           {education.map((item) => (
             <div className="education" key={item.school}>
               <div>
@@ -164,7 +232,7 @@ export function App() {
           ))}
           {profile.publication && isReal(profile.publication.title) && (
             <div className="publication">
-              <p className="project-role">Publikasi</p>
+              <p className="project-role">{t.publication}</p>
               <h3>{profile.publication.title}</h3>
               <p>
                 {profile.publication.venue} ·{" "}
@@ -187,7 +255,7 @@ export function App() {
           <a href={`mailto:${p.email}`}>{p.email}</a> ·{" "}
           {formatPhone(p.phone)}
         </p>
-        <p className="footer-note">Dibuat dengan React + Vite.</p>
+        <p className="footer-note">{t.builtWith}</p>
       </footer>
     </div>
   );
